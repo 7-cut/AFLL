@@ -1,0 +1,1996 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> fdec
+Rule 2     start -> expression
+Rule 3     start -> while
+Rule 4     start -> vdec
+Rule 5     start -> console
+Rule 6     fdec -> PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+Rule 7     fdec -> PP SUB FIFFERS args RPAREN COL statements END SUB
+Rule 8     fdec -> FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+Rule 9     fdec -> SUB FIFFERS args RPAREN COL statements END SUB
+Rule 10    arg -> ifers AS types
+Rule 11    args -> arg COM args
+Rule 12    args -> arg
+Rule 13    args -> empty
+Rule 14    empty -> <empty>
+Rule 15    console -> WRITE strings RPAREN
+Rule 16    console -> WRITELINE strings RPAREN
+Rule 17    strings -> STRINGS COM strings
+Rule 18    strings -> STRINGS
+Rule 19    strings -> IFERS
+Rule 20    strings -> IFERS COM strings
+Rule 21    expression -> term
+Rule 22    expression -> expression PLUS term
+Rule 23    expression -> expression MINUS term
+Rule 24    vdec -> DIM ifers AS types
+Rule 25    vdec -> DIM IFERS AS types
+Rule 26    ifers -> IFERS
+Rule 27    ifers -> IFERS COM ifers
+Rule 28    types -> INTEGER
+Rule 29    types -> DOUBLE
+Rule 30    types -> SINGLE
+Rule 31    types -> STRING
+Rule 32    types -> BOOLEAN
+Rule 33    types -> CHAR
+Rule 34    types -> DECIMAL
+Rule 35    types -> LONG
+Rule 36    types -> OBJECT
+Rule 37    types -> DATE
+Rule 38    term -> factor
+Rule 39    term -> term TIMES factor
+Rule 40    term -> term DIVIDE factor
+Rule 41    term -> term MOD factor
+Rule 42    term -> term DOUBLESLASH factor
+Rule 43    factor -> primary
+Rule 44    factor -> factor EXPONENT primary
+Rule 45    while -> WHILE_LOOP condition COL statements END WHILE_LOOP
+Rule 46    relation -> LESSTE
+Rule 47    relation -> LESST
+Rule 48    relation -> GREATT
+Rule 49    relation -> GREATTE
+Rule 50    relation -> EQUALT
+Rule 51    relation -> NEQUALT
+Rule 52    condition -> IFERS relation IFERS
+Rule 53    condition -> IFERS relation NUMBER
+Rule 54    condition -> NUMBER relation IFERS
+Rule 55    condition -> NUMBER relation NUMBER
+Rule 56    condition -> TRUE
+Rule 57    condition -> FALSE
+Rule 58    statements -> states COL statements
+Rule 59    statements -> states COL
+Rule 60    states -> assignment
+Rule 61    states -> while
+Rule 62    states -> vdec
+Rule 63    states -> fdec
+Rule 64    states -> expression
+Rule 65    states -> console
+Rule 66    assignment -> ifers EQUALS expression
+Rule 67    primary -> NUMBER
+Rule 68    primary -> IFERS
+Rule 69    primary -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+AS                   : 10 24 25
+BOOLEAN              : 32
+CHAR                 : 33
+COL                  : 6 7 8 9 45 58 59
+COM                  : 11 17 20 27
+DATE                 : 37
+DECIMAL              : 34
+DIM                  : 24 25
+DIVIDE               : 40
+DOUBLE               : 29
+DOUBLESLASH          : 42
+END                  : 6 7 8 9 45
+EQUALS               : 66
+EQUALT               : 50
+EXPONENT             : 44
+FALSE                : 57
+FIFFERS              : 6 7 8 9
+FUNCTION             : 6 6 8 8
+GREATT               : 48
+GREATTE              : 49
+IFERS                : 19 20 25 26 27 52 52 53 54 68
+INTEGER              : 28
+LESST                : 47
+LESSTE               : 46
+LONG                 : 35
+LPAREN               : 69
+MINUS                : 23
+MOD                  : 41
+NEQUALT              : 51
+NUMBER               : 53 54 55 55 67
+OBJECT               : 36
+PLUS                 : 22
+PP                   : 6 7
+RPAREN               : 6 7 8 9 15 16 69
+SINGLE               : 30
+STRING               : 31
+STRINGS              : 17 18
+SUB                  : 7 7 9 9
+TIMES                : 39
+TRUE                 : 56
+WHILE_LOOP           : 45 45
+WRITE                : 15
+WRITELINE            : 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+arg                  : 11 12
+args                 : 6 7 8 9 11
+assignment           : 60
+condition            : 45
+console              : 5 65
+empty                : 13
+expression           : 2 22 23 64 66 69
+factor               : 38 39 40 41 42 44
+fdec                 : 1 63
+ifers                : 10 24 27 66
+primary              : 43 44
+relation             : 52 53 54 55
+start                : 0
+statements           : 6 7 8 9 45 58
+states               : 58 59
+strings              : 15 16 17 20
+term                 : 21 22 23 39 40 41 42
+types                : 10 24 25
+vdec                 : 4 62
+while                : 3 61
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . fdec
+    (2) start -> . expression
+    (3) start -> . while
+    (4) start -> . vdec
+    (5) start -> . console
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    start                          shift and go to state 1
+    fdec                           shift and go to state 2
+    expression                     shift and go to state 3
+    while                          shift and go to state 4
+    vdec                           shift and go to state 5
+    console                        shift and go to state 6
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> fdec .
+
+    $end            reduce using rule 1 (start -> fdec .)
+
+
+state 3
+
+    (2) start -> expression .
+    (22) expression -> expression . PLUS term
+    (23) expression -> expression . MINUS term
+
+    $end            reduce using rule 2 (start -> expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+
+
+state 4
+
+    (3) start -> while .
+
+    $end            reduce using rule 3 (start -> while .)
+
+
+state 5
+
+    (4) start -> vdec .
+
+    $end            reduce using rule 4 (start -> vdec .)
+
+
+state 6
+
+    (5) start -> console .
+
+    $end            reduce using rule 5 (start -> console .)
+
+
+state 7
+
+    (6) fdec -> PP . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> PP . SUB FIFFERS args RPAREN COL statements END SUB
+
+    FUNCTION        shift and go to state 22
+    SUB             shift and go to state 23
+
+
+state 8
+
+    (8) fdec -> FUNCTION . FIFFERS args RPAREN COL statements END FUNCTION
+
+    FIFFERS         shift and go to state 24
+
+
+state 9
+
+    (9) fdec -> SUB . FIFFERS args RPAREN COL statements END SUB
+
+    FIFFERS         shift and go to state 25
+
+
+state 10
+
+    (21) expression -> term .
+    (39) term -> term . TIMES factor
+    (40) term -> term . DIVIDE factor
+    (41) term -> term . MOD factor
+    (42) term -> term . DOUBLESLASH factor
+
+    PLUS            reduce using rule 21 (expression -> term .)
+    MINUS           reduce using rule 21 (expression -> term .)
+    $end            reduce using rule 21 (expression -> term .)
+    RPAREN          reduce using rule 21 (expression -> term .)
+    COL             reduce using rule 21 (expression -> term .)
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    MOD             shift and go to state 28
+    DOUBLESLASH     shift and go to state 29
+
+
+state 11
+
+    (45) while -> WHILE_LOOP . condition COL statements END WHILE_LOOP
+    (52) condition -> . IFERS relation IFERS
+    (53) condition -> . IFERS relation NUMBER
+    (54) condition -> . NUMBER relation IFERS
+    (55) condition -> . NUMBER relation NUMBER
+    (56) condition -> . TRUE
+    (57) condition -> . FALSE
+
+    IFERS           shift and go to state 31
+    NUMBER          shift and go to state 32
+    TRUE            shift and go to state 33
+    FALSE           shift and go to state 34
+
+    condition                      shift and go to state 30
+
+state 12
+
+    (24) vdec -> DIM . ifers AS types
+    (25) vdec -> DIM . IFERS AS types
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    IFERS           shift and go to state 36
+
+    ifers                          shift and go to state 35
+
+state 13
+
+    (68) primary -> IFERS .
+
+    EXPONENT        reduce using rule 68 (primary -> IFERS .)
+    TIMES           reduce using rule 68 (primary -> IFERS .)
+    DIVIDE          reduce using rule 68 (primary -> IFERS .)
+    MOD             reduce using rule 68 (primary -> IFERS .)
+    DOUBLESLASH     reduce using rule 68 (primary -> IFERS .)
+    PLUS            reduce using rule 68 (primary -> IFERS .)
+    MINUS           reduce using rule 68 (primary -> IFERS .)
+    $end            reduce using rule 68 (primary -> IFERS .)
+    RPAREN          reduce using rule 68 (primary -> IFERS .)
+    COL             reduce using rule 68 (primary -> IFERS .)
+
+
+state 14
+
+    (15) console -> WRITE . strings RPAREN
+    (17) strings -> . STRINGS COM strings
+    (18) strings -> . STRINGS
+    (19) strings -> . IFERS
+    (20) strings -> . IFERS COM strings
+
+    STRINGS         shift and go to state 38
+    IFERS           shift and go to state 39
+
+    strings                        shift and go to state 37
+
+state 15
+
+    (16) console -> WRITELINE . strings RPAREN
+    (17) strings -> . STRINGS COM strings
+    (18) strings -> . STRINGS
+    (19) strings -> . IFERS
+    (20) strings -> . IFERS COM strings
+
+    STRINGS         shift and go to state 38
+    IFERS           shift and go to state 39
+
+    strings                        shift and go to state 40
+
+state 16
+
+    (38) term -> factor .
+    (44) factor -> factor . EXPONENT primary
+
+    TIMES           reduce using rule 38 (term -> factor .)
+    DIVIDE          reduce using rule 38 (term -> factor .)
+    MOD             reduce using rule 38 (term -> factor .)
+    DOUBLESLASH     reduce using rule 38 (term -> factor .)
+    PLUS            reduce using rule 38 (term -> factor .)
+    MINUS           reduce using rule 38 (term -> factor .)
+    $end            reduce using rule 38 (term -> factor .)
+    RPAREN          reduce using rule 38 (term -> factor .)
+    COL             reduce using rule 38 (term -> factor .)
+    EXPONENT        shift and go to state 41
+
+
+state 17
+
+    (43) factor -> primary .
+
+    EXPONENT        reduce using rule 43 (factor -> primary .)
+    TIMES           reduce using rule 43 (factor -> primary .)
+    DIVIDE          reduce using rule 43 (factor -> primary .)
+    MOD             reduce using rule 43 (factor -> primary .)
+    DOUBLESLASH     reduce using rule 43 (factor -> primary .)
+    PLUS            reduce using rule 43 (factor -> primary .)
+    MINUS           reduce using rule 43 (factor -> primary .)
+    $end            reduce using rule 43 (factor -> primary .)
+    RPAREN          reduce using rule 43 (factor -> primary .)
+    COL             reduce using rule 43 (factor -> primary .)
+
+
+state 18
+
+    (67) primary -> NUMBER .
+
+    EXPONENT        reduce using rule 67 (primary -> NUMBER .)
+    TIMES           reduce using rule 67 (primary -> NUMBER .)
+    DIVIDE          reduce using rule 67 (primary -> NUMBER .)
+    MOD             reduce using rule 67 (primary -> NUMBER .)
+    DOUBLESLASH     reduce using rule 67 (primary -> NUMBER .)
+    PLUS            reduce using rule 67 (primary -> NUMBER .)
+    MINUS           reduce using rule 67 (primary -> NUMBER .)
+    $end            reduce using rule 67 (primary -> NUMBER .)
+    RPAREN          reduce using rule 67 (primary -> NUMBER .)
+    COL             reduce using rule 67 (primary -> NUMBER .)
+
+
+state 19
+
+    (69) primary -> LPAREN . expression RPAREN
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    expression                     shift and go to state 42
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 20
+
+    (22) expression -> expression PLUS . term
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    term                           shift and go to state 43
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 21
+
+    (23) expression -> expression MINUS . term
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    term                           shift and go to state 44
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 22
+
+    (6) fdec -> PP FUNCTION . FIFFERS args RPAREN COL statements END FUNCTION
+
+    FIFFERS         shift and go to state 45
+
+
+state 23
+
+    (7) fdec -> PP SUB . FIFFERS args RPAREN COL statements END SUB
+
+    FIFFERS         shift and go to state 46
+
+
+state 24
+
+    (8) fdec -> FUNCTION FIFFERS . args RPAREN COL statements END FUNCTION
+    (11) args -> . arg COM args
+    (12) args -> . arg
+    (13) args -> . empty
+    (10) arg -> . ifers AS types
+    (14) empty -> .
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    RPAREN          reduce using rule 14 (empty -> .)
+    IFERS           shift and go to state 51
+
+    args                           shift and go to state 47
+    arg                            shift and go to state 48
+    empty                          shift and go to state 49
+    ifers                          shift and go to state 50
+
+state 25
+
+    (9) fdec -> SUB FIFFERS . args RPAREN COL statements END SUB
+    (11) args -> . arg COM args
+    (12) args -> . arg
+    (13) args -> . empty
+    (10) arg -> . ifers AS types
+    (14) empty -> .
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    RPAREN          reduce using rule 14 (empty -> .)
+    IFERS           shift and go to state 51
+
+    args                           shift and go to state 52
+    arg                            shift and go to state 48
+    empty                          shift and go to state 49
+    ifers                          shift and go to state 50
+
+state 26
+
+    (39) term -> term TIMES . factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    factor                         shift and go to state 53
+    primary                        shift and go to state 17
+
+state 27
+
+    (40) term -> term DIVIDE . factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    factor                         shift and go to state 54
+    primary                        shift and go to state 17
+
+state 28
+
+    (41) term -> term MOD . factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    factor                         shift and go to state 55
+    primary                        shift and go to state 17
+
+state 29
+
+    (42) term -> term DOUBLESLASH . factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    factor                         shift and go to state 56
+    primary                        shift and go to state 17
+
+state 30
+
+    (45) while -> WHILE_LOOP condition . COL statements END WHILE_LOOP
+
+    COL             shift and go to state 57
+
+
+state 31
+
+    (52) condition -> IFERS . relation IFERS
+    (53) condition -> IFERS . relation NUMBER
+    (46) relation -> . LESSTE
+    (47) relation -> . LESST
+    (48) relation -> . GREATT
+    (49) relation -> . GREATTE
+    (50) relation -> . EQUALT
+    (51) relation -> . NEQUALT
+
+    LESSTE          shift and go to state 59
+    LESST           shift and go to state 60
+    GREATT          shift and go to state 61
+    GREATTE         shift and go to state 62
+    EQUALT          shift and go to state 63
+    NEQUALT         shift and go to state 64
+
+    relation                       shift and go to state 58
+
+state 32
+
+    (54) condition -> NUMBER . relation IFERS
+    (55) condition -> NUMBER . relation NUMBER
+    (46) relation -> . LESSTE
+    (47) relation -> . LESST
+    (48) relation -> . GREATT
+    (49) relation -> . GREATTE
+    (50) relation -> . EQUALT
+    (51) relation -> . NEQUALT
+
+    LESSTE          shift and go to state 59
+    LESST           shift and go to state 60
+    GREATT          shift and go to state 61
+    GREATTE         shift and go to state 62
+    EQUALT          shift and go to state 63
+    NEQUALT         shift and go to state 64
+
+    relation                       shift and go to state 65
+
+state 33
+
+    (56) condition -> TRUE .
+
+    COL             reduce using rule 56 (condition -> TRUE .)
+
+
+state 34
+
+    (57) condition -> FALSE .
+
+    COL             reduce using rule 57 (condition -> FALSE .)
+
+
+state 35
+
+    (24) vdec -> DIM ifers . AS types
+
+    AS              shift and go to state 66
+
+
+state 36
+
+    (25) vdec -> DIM IFERS . AS types
+    (26) ifers -> IFERS .
+    (27) ifers -> IFERS . COM ifers
+
+  ! shift/reduce conflict for AS resolved as shift
+    AS              shift and go to state 67
+    COM             shift and go to state 68
+
+  ! AS              [ reduce using rule 26 (ifers -> IFERS .) ]
+
+
+state 37
+
+    (15) console -> WRITE strings . RPAREN
+
+    RPAREN          shift and go to state 69
+
+
+state 38
+
+    (17) strings -> STRINGS . COM strings
+    (18) strings -> STRINGS .
+
+    COM             shift and go to state 70
+    RPAREN          reduce using rule 18 (strings -> STRINGS .)
+
+
+state 39
+
+    (19) strings -> IFERS .
+    (20) strings -> IFERS . COM strings
+
+    RPAREN          reduce using rule 19 (strings -> IFERS .)
+    COM             shift and go to state 71
+
+
+state 40
+
+    (16) console -> WRITELINE strings . RPAREN
+
+    RPAREN          shift and go to state 72
+
+
+state 41
+
+    (44) factor -> factor EXPONENT . primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    primary                        shift and go to state 73
+
+state 42
+
+    (69) primary -> LPAREN expression . RPAREN
+    (22) expression -> expression . PLUS term
+    (23) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 74
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+
+
+state 43
+
+    (22) expression -> expression PLUS term .
+    (39) term -> term . TIMES factor
+    (40) term -> term . DIVIDE factor
+    (41) term -> term . MOD factor
+    (42) term -> term . DOUBLESLASH factor
+
+    PLUS            reduce using rule 22 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 22 (expression -> expression PLUS term .)
+    $end            reduce using rule 22 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 22 (expression -> expression PLUS term .)
+    COL             reduce using rule 22 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    MOD             shift and go to state 28
+    DOUBLESLASH     shift and go to state 29
+
+
+state 44
+
+    (23) expression -> expression MINUS term .
+    (39) term -> term . TIMES factor
+    (40) term -> term . DIVIDE factor
+    (41) term -> term . MOD factor
+    (42) term -> term . DOUBLESLASH factor
+
+    PLUS            reduce using rule 23 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 23 (expression -> expression MINUS term .)
+    $end            reduce using rule 23 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 23 (expression -> expression MINUS term .)
+    COL             reduce using rule 23 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    MOD             shift and go to state 28
+    DOUBLESLASH     shift and go to state 29
+
+
+state 45
+
+    (6) fdec -> PP FUNCTION FIFFERS . args RPAREN COL statements END FUNCTION
+    (11) args -> . arg COM args
+    (12) args -> . arg
+    (13) args -> . empty
+    (10) arg -> . ifers AS types
+    (14) empty -> .
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    RPAREN          reduce using rule 14 (empty -> .)
+    IFERS           shift and go to state 51
+
+    args                           shift and go to state 75
+    arg                            shift and go to state 48
+    empty                          shift and go to state 49
+    ifers                          shift and go to state 50
+
+state 46
+
+    (7) fdec -> PP SUB FIFFERS . args RPAREN COL statements END SUB
+    (11) args -> . arg COM args
+    (12) args -> . arg
+    (13) args -> . empty
+    (10) arg -> . ifers AS types
+    (14) empty -> .
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    RPAREN          reduce using rule 14 (empty -> .)
+    IFERS           shift and go to state 51
+
+    args                           shift and go to state 76
+    arg                            shift and go to state 48
+    empty                          shift and go to state 49
+    ifers                          shift and go to state 50
+
+state 47
+
+    (8) fdec -> FUNCTION FIFFERS args . RPAREN COL statements END FUNCTION
+
+    RPAREN          shift and go to state 77
+
+
+state 48
+
+    (11) args -> arg . COM args
+    (12) args -> arg .
+
+    COM             shift and go to state 78
+    RPAREN          reduce using rule 12 (args -> arg .)
+
+
+state 49
+
+    (13) args -> empty .
+
+    RPAREN          reduce using rule 13 (args -> empty .)
+
+
+state 50
+
+    (10) arg -> ifers . AS types
+
+    AS              shift and go to state 79
+
+
+state 51
+
+    (26) ifers -> IFERS .
+    (27) ifers -> IFERS . COM ifers
+
+    AS              reduce using rule 26 (ifers -> IFERS .)
+    EQUALS          reduce using rule 26 (ifers -> IFERS .)
+    COM             shift and go to state 68
+
+
+state 52
+
+    (9) fdec -> SUB FIFFERS args . RPAREN COL statements END SUB
+
+    RPAREN          shift and go to state 80
+
+
+state 53
+
+    (39) term -> term TIMES factor .
+    (44) factor -> factor . EXPONENT primary
+
+    TIMES           reduce using rule 39 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 39 (term -> term TIMES factor .)
+    MOD             reduce using rule 39 (term -> term TIMES factor .)
+    DOUBLESLASH     reduce using rule 39 (term -> term TIMES factor .)
+    PLUS            reduce using rule 39 (term -> term TIMES factor .)
+    MINUS           reduce using rule 39 (term -> term TIMES factor .)
+    $end            reduce using rule 39 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 39 (term -> term TIMES factor .)
+    COL             reduce using rule 39 (term -> term TIMES factor .)
+    EXPONENT        shift and go to state 41
+
+
+state 54
+
+    (40) term -> term DIVIDE factor .
+    (44) factor -> factor . EXPONENT primary
+
+    TIMES           reduce using rule 40 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 40 (term -> term DIVIDE factor .)
+    MOD             reduce using rule 40 (term -> term DIVIDE factor .)
+    DOUBLESLASH     reduce using rule 40 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 40 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 40 (term -> term DIVIDE factor .)
+    $end            reduce using rule 40 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 40 (term -> term DIVIDE factor .)
+    COL             reduce using rule 40 (term -> term DIVIDE factor .)
+    EXPONENT        shift and go to state 41
+
+
+state 55
+
+    (41) term -> term MOD factor .
+    (44) factor -> factor . EXPONENT primary
+
+    TIMES           reduce using rule 41 (term -> term MOD factor .)
+    DIVIDE          reduce using rule 41 (term -> term MOD factor .)
+    MOD             reduce using rule 41 (term -> term MOD factor .)
+    DOUBLESLASH     reduce using rule 41 (term -> term MOD factor .)
+    PLUS            reduce using rule 41 (term -> term MOD factor .)
+    MINUS           reduce using rule 41 (term -> term MOD factor .)
+    $end            reduce using rule 41 (term -> term MOD factor .)
+    RPAREN          reduce using rule 41 (term -> term MOD factor .)
+    COL             reduce using rule 41 (term -> term MOD factor .)
+    EXPONENT        shift and go to state 41
+
+
+state 56
+
+    (42) term -> term DOUBLESLASH factor .
+    (44) factor -> factor . EXPONENT primary
+
+    TIMES           reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    DIVIDE          reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    MOD             reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    DOUBLESLASH     reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    PLUS            reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    MINUS           reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    $end            reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    RPAREN          reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    COL             reduce using rule 42 (term -> term DOUBLESLASH factor .)
+    EXPONENT        shift and go to state 41
+
+
+state 57
+
+    (45) while -> WHILE_LOOP condition COL . statements END WHILE_LOOP
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    statements                     shift and go to state 81
+    states                         shift and go to state 82
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 58
+
+    (52) condition -> IFERS relation . IFERS
+    (53) condition -> IFERS relation . NUMBER
+
+    IFERS           shift and go to state 91
+    NUMBER          shift and go to state 92
+
+
+state 59
+
+    (46) relation -> LESSTE .
+
+    IFERS           reduce using rule 46 (relation -> LESSTE .)
+    NUMBER          reduce using rule 46 (relation -> LESSTE .)
+
+
+state 60
+
+    (47) relation -> LESST .
+
+    IFERS           reduce using rule 47 (relation -> LESST .)
+    NUMBER          reduce using rule 47 (relation -> LESST .)
+
+
+state 61
+
+    (48) relation -> GREATT .
+
+    IFERS           reduce using rule 48 (relation -> GREATT .)
+    NUMBER          reduce using rule 48 (relation -> GREATT .)
+
+
+state 62
+
+    (49) relation -> GREATTE .
+
+    IFERS           reduce using rule 49 (relation -> GREATTE .)
+    NUMBER          reduce using rule 49 (relation -> GREATTE .)
+
+
+state 63
+
+    (50) relation -> EQUALT .
+
+    IFERS           reduce using rule 50 (relation -> EQUALT .)
+    NUMBER          reduce using rule 50 (relation -> EQUALT .)
+
+
+state 64
+
+    (51) relation -> NEQUALT .
+
+    IFERS           reduce using rule 51 (relation -> NEQUALT .)
+    NUMBER          reduce using rule 51 (relation -> NEQUALT .)
+
+
+state 65
+
+    (54) condition -> NUMBER relation . IFERS
+    (55) condition -> NUMBER relation . NUMBER
+
+    IFERS           shift and go to state 94
+    NUMBER          shift and go to state 93
+
+
+state 66
+
+    (24) vdec -> DIM ifers AS . types
+    (28) types -> . INTEGER
+    (29) types -> . DOUBLE
+    (30) types -> . SINGLE
+    (31) types -> . STRING
+    (32) types -> . BOOLEAN
+    (33) types -> . CHAR
+    (34) types -> . DECIMAL
+    (35) types -> . LONG
+    (36) types -> . OBJECT
+    (37) types -> . DATE
+
+    INTEGER         shift and go to state 96
+    DOUBLE          shift and go to state 97
+    SINGLE          shift and go to state 98
+    STRING          shift and go to state 99
+    BOOLEAN         shift and go to state 100
+    CHAR            shift and go to state 101
+    DECIMAL         shift and go to state 102
+    LONG            shift and go to state 103
+    OBJECT          shift and go to state 104
+    DATE            shift and go to state 105
+
+    types                          shift and go to state 95
+
+state 67
+
+    (25) vdec -> DIM IFERS AS . types
+    (28) types -> . INTEGER
+    (29) types -> . DOUBLE
+    (30) types -> . SINGLE
+    (31) types -> . STRING
+    (32) types -> . BOOLEAN
+    (33) types -> . CHAR
+    (34) types -> . DECIMAL
+    (35) types -> . LONG
+    (36) types -> . OBJECT
+    (37) types -> . DATE
+
+    INTEGER         shift and go to state 96
+    DOUBLE          shift and go to state 97
+    SINGLE          shift and go to state 98
+    STRING          shift and go to state 99
+    BOOLEAN         shift and go to state 100
+    CHAR            shift and go to state 101
+    DECIMAL         shift and go to state 102
+    LONG            shift and go to state 103
+    OBJECT          shift and go to state 104
+    DATE            shift and go to state 105
+
+    types                          shift and go to state 106
+
+state 68
+
+    (27) ifers -> IFERS COM . ifers
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    IFERS           shift and go to state 51
+
+    ifers                          shift and go to state 107
+
+state 69
+
+    (15) console -> WRITE strings RPAREN .
+
+    $end            reduce using rule 15 (console -> WRITE strings RPAREN .)
+    COL             reduce using rule 15 (console -> WRITE strings RPAREN .)
+
+
+state 70
+
+    (17) strings -> STRINGS COM . strings
+    (17) strings -> . STRINGS COM strings
+    (18) strings -> . STRINGS
+    (19) strings -> . IFERS
+    (20) strings -> . IFERS COM strings
+
+    STRINGS         shift and go to state 38
+    IFERS           shift and go to state 39
+
+    strings                        shift and go to state 108
+
+state 71
+
+    (20) strings -> IFERS COM . strings
+    (17) strings -> . STRINGS COM strings
+    (18) strings -> . STRINGS
+    (19) strings -> . IFERS
+    (20) strings -> . IFERS COM strings
+
+    STRINGS         shift and go to state 38
+    IFERS           shift and go to state 39
+
+    strings                        shift and go to state 109
+
+state 72
+
+    (16) console -> WRITELINE strings RPAREN .
+
+    $end            reduce using rule 16 (console -> WRITELINE strings RPAREN .)
+    COL             reduce using rule 16 (console -> WRITELINE strings RPAREN .)
+
+
+state 73
+
+    (44) factor -> factor EXPONENT primary .
+
+    EXPONENT        reduce using rule 44 (factor -> factor EXPONENT primary .)
+    TIMES           reduce using rule 44 (factor -> factor EXPONENT primary .)
+    DIVIDE          reduce using rule 44 (factor -> factor EXPONENT primary .)
+    MOD             reduce using rule 44 (factor -> factor EXPONENT primary .)
+    DOUBLESLASH     reduce using rule 44 (factor -> factor EXPONENT primary .)
+    PLUS            reduce using rule 44 (factor -> factor EXPONENT primary .)
+    MINUS           reduce using rule 44 (factor -> factor EXPONENT primary .)
+    $end            reduce using rule 44 (factor -> factor EXPONENT primary .)
+    RPAREN          reduce using rule 44 (factor -> factor EXPONENT primary .)
+    COL             reduce using rule 44 (factor -> factor EXPONENT primary .)
+
+
+state 74
+
+    (69) primary -> LPAREN expression RPAREN .
+
+    EXPONENT        reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    MOD             reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    DOUBLESLASH     reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    $end            reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+    COL             reduce using rule 69 (primary -> LPAREN expression RPAREN .)
+
+
+state 75
+
+    (6) fdec -> PP FUNCTION FIFFERS args . RPAREN COL statements END FUNCTION
+
+    RPAREN          shift and go to state 110
+
+
+state 76
+
+    (7) fdec -> PP SUB FIFFERS args . RPAREN COL statements END SUB
+
+    RPAREN          shift and go to state 111
+
+
+state 77
+
+    (8) fdec -> FUNCTION FIFFERS args RPAREN . COL statements END FUNCTION
+
+    COL             shift and go to state 112
+
+
+state 78
+
+    (11) args -> arg COM . args
+    (11) args -> . arg COM args
+    (12) args -> . arg
+    (13) args -> . empty
+    (10) arg -> . ifers AS types
+    (14) empty -> .
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+
+    RPAREN          reduce using rule 14 (empty -> .)
+    IFERS           shift and go to state 51
+
+    arg                            shift and go to state 48
+    args                           shift and go to state 113
+    empty                          shift and go to state 49
+    ifers                          shift and go to state 50
+
+state 79
+
+    (10) arg -> ifers AS . types
+    (28) types -> . INTEGER
+    (29) types -> . DOUBLE
+    (30) types -> . SINGLE
+    (31) types -> . STRING
+    (32) types -> . BOOLEAN
+    (33) types -> . CHAR
+    (34) types -> . DECIMAL
+    (35) types -> . LONG
+    (36) types -> . OBJECT
+    (37) types -> . DATE
+
+    INTEGER         shift and go to state 96
+    DOUBLE          shift and go to state 97
+    SINGLE          shift and go to state 98
+    STRING          shift and go to state 99
+    BOOLEAN         shift and go to state 100
+    CHAR            shift and go to state 101
+    DECIMAL         shift and go to state 102
+    LONG            shift and go to state 103
+    OBJECT          shift and go to state 104
+    DATE            shift and go to state 105
+
+    types                          shift and go to state 114
+
+state 80
+
+    (9) fdec -> SUB FIFFERS args RPAREN . COL statements END SUB
+
+    COL             shift and go to state 115
+
+
+state 81
+
+    (45) while -> WHILE_LOOP condition COL statements . END WHILE_LOOP
+
+    END             shift and go to state 116
+
+
+state 82
+
+    (58) statements -> states . COL statements
+    (59) statements -> states . COL
+
+    COL             shift and go to state 117
+
+
+state 83
+
+    (60) states -> assignment .
+
+    COL             reduce using rule 60 (states -> assignment .)
+
+
+state 84
+
+    (61) states -> while .
+
+    COL             reduce using rule 61 (states -> while .)
+
+
+state 85
+
+    (62) states -> vdec .
+
+    COL             reduce using rule 62 (states -> vdec .)
+
+
+state 86
+
+    (63) states -> fdec .
+
+    COL             reduce using rule 63 (states -> fdec .)
+
+
+state 87
+
+    (64) states -> expression .
+    (22) expression -> expression . PLUS term
+    (23) expression -> expression . MINUS term
+
+    COL             reduce using rule 64 (states -> expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+
+
+state 88
+
+    (65) states -> console .
+
+    COL             reduce using rule 65 (states -> console .)
+
+
+state 89
+
+    (66) assignment -> ifers . EQUALS expression
+
+    EQUALS          shift and go to state 118
+
+
+state 90
+
+    (26) ifers -> IFERS .
+    (27) ifers -> IFERS . COM ifers
+    (68) primary -> IFERS .
+
+    EQUALS          reduce using rule 26 (ifers -> IFERS .)
+    COM             shift and go to state 68
+    EXPONENT        reduce using rule 68 (primary -> IFERS .)
+    TIMES           reduce using rule 68 (primary -> IFERS .)
+    DIVIDE          reduce using rule 68 (primary -> IFERS .)
+    MOD             reduce using rule 68 (primary -> IFERS .)
+    DOUBLESLASH     reduce using rule 68 (primary -> IFERS .)
+    PLUS            reduce using rule 68 (primary -> IFERS .)
+    MINUS           reduce using rule 68 (primary -> IFERS .)
+    COL             reduce using rule 68 (primary -> IFERS .)
+
+
+state 91
+
+    (52) condition -> IFERS relation IFERS .
+
+    COL             reduce using rule 52 (condition -> IFERS relation IFERS .)
+
+
+state 92
+
+    (53) condition -> IFERS relation NUMBER .
+
+    COL             reduce using rule 53 (condition -> IFERS relation NUMBER .)
+
+
+state 93
+
+    (55) condition -> NUMBER relation NUMBER .
+
+    COL             reduce using rule 55 (condition -> NUMBER relation NUMBER .)
+
+
+state 94
+
+    (54) condition -> NUMBER relation IFERS .
+
+    COL             reduce using rule 54 (condition -> NUMBER relation IFERS .)
+
+
+state 95
+
+    (24) vdec -> DIM ifers AS types .
+
+    $end            reduce using rule 24 (vdec -> DIM ifers AS types .)
+    COL             reduce using rule 24 (vdec -> DIM ifers AS types .)
+
+
+state 96
+
+    (28) types -> INTEGER .
+
+    $end            reduce using rule 28 (types -> INTEGER .)
+    COL             reduce using rule 28 (types -> INTEGER .)
+    COM             reduce using rule 28 (types -> INTEGER .)
+    RPAREN          reduce using rule 28 (types -> INTEGER .)
+
+
+state 97
+
+    (29) types -> DOUBLE .
+
+    $end            reduce using rule 29 (types -> DOUBLE .)
+    COL             reduce using rule 29 (types -> DOUBLE .)
+    COM             reduce using rule 29 (types -> DOUBLE .)
+    RPAREN          reduce using rule 29 (types -> DOUBLE .)
+
+
+state 98
+
+    (30) types -> SINGLE .
+
+    $end            reduce using rule 30 (types -> SINGLE .)
+    COL             reduce using rule 30 (types -> SINGLE .)
+    COM             reduce using rule 30 (types -> SINGLE .)
+    RPAREN          reduce using rule 30 (types -> SINGLE .)
+
+
+state 99
+
+    (31) types -> STRING .
+
+    $end            reduce using rule 31 (types -> STRING .)
+    COL             reduce using rule 31 (types -> STRING .)
+    COM             reduce using rule 31 (types -> STRING .)
+    RPAREN          reduce using rule 31 (types -> STRING .)
+
+
+state 100
+
+    (32) types -> BOOLEAN .
+
+    $end            reduce using rule 32 (types -> BOOLEAN .)
+    COL             reduce using rule 32 (types -> BOOLEAN .)
+    COM             reduce using rule 32 (types -> BOOLEAN .)
+    RPAREN          reduce using rule 32 (types -> BOOLEAN .)
+
+
+state 101
+
+    (33) types -> CHAR .
+
+    $end            reduce using rule 33 (types -> CHAR .)
+    COL             reduce using rule 33 (types -> CHAR .)
+    COM             reduce using rule 33 (types -> CHAR .)
+    RPAREN          reduce using rule 33 (types -> CHAR .)
+
+
+state 102
+
+    (34) types -> DECIMAL .
+
+    $end            reduce using rule 34 (types -> DECIMAL .)
+    COL             reduce using rule 34 (types -> DECIMAL .)
+    COM             reduce using rule 34 (types -> DECIMAL .)
+    RPAREN          reduce using rule 34 (types -> DECIMAL .)
+
+
+state 103
+
+    (35) types -> LONG .
+
+    $end            reduce using rule 35 (types -> LONG .)
+    COL             reduce using rule 35 (types -> LONG .)
+    COM             reduce using rule 35 (types -> LONG .)
+    RPAREN          reduce using rule 35 (types -> LONG .)
+
+
+state 104
+
+    (36) types -> OBJECT .
+
+    $end            reduce using rule 36 (types -> OBJECT .)
+    COL             reduce using rule 36 (types -> OBJECT .)
+    COM             reduce using rule 36 (types -> OBJECT .)
+    RPAREN          reduce using rule 36 (types -> OBJECT .)
+
+
+state 105
+
+    (37) types -> DATE .
+
+    $end            reduce using rule 37 (types -> DATE .)
+    COL             reduce using rule 37 (types -> DATE .)
+    COM             reduce using rule 37 (types -> DATE .)
+    RPAREN          reduce using rule 37 (types -> DATE .)
+
+
+state 106
+
+    (25) vdec -> DIM IFERS AS types .
+
+    $end            reduce using rule 25 (vdec -> DIM IFERS AS types .)
+    COL             reduce using rule 25 (vdec -> DIM IFERS AS types .)
+
+
+state 107
+
+    (27) ifers -> IFERS COM ifers .
+
+    AS              reduce using rule 27 (ifers -> IFERS COM ifers .)
+    EQUALS          reduce using rule 27 (ifers -> IFERS COM ifers .)
+
+
+state 108
+
+    (17) strings -> STRINGS COM strings .
+
+    RPAREN          reduce using rule 17 (strings -> STRINGS COM strings .)
+
+
+state 109
+
+    (20) strings -> IFERS COM strings .
+
+    RPAREN          reduce using rule 20 (strings -> IFERS COM strings .)
+
+
+state 110
+
+    (6) fdec -> PP FUNCTION FIFFERS args RPAREN . COL statements END FUNCTION
+
+    COL             shift and go to state 119
+
+
+state 111
+
+    (7) fdec -> PP SUB FIFFERS args RPAREN . COL statements END SUB
+
+    COL             shift and go to state 120
+
+
+state 112
+
+    (8) fdec -> FUNCTION FIFFERS args RPAREN COL . statements END FUNCTION
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    statements                     shift and go to state 121
+    states                         shift and go to state 82
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 113
+
+    (11) args -> arg COM args .
+
+    RPAREN          reduce using rule 11 (args -> arg COM args .)
+
+
+state 114
+
+    (10) arg -> ifers AS types .
+
+    COM             reduce using rule 10 (arg -> ifers AS types .)
+    RPAREN          reduce using rule 10 (arg -> ifers AS types .)
+
+
+state 115
+
+    (9) fdec -> SUB FIFFERS args RPAREN COL . statements END SUB
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    statements                     shift and go to state 122
+    states                         shift and go to state 82
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 116
+
+    (45) while -> WHILE_LOOP condition COL statements END . WHILE_LOOP
+
+    WHILE_LOOP      shift and go to state 123
+
+
+state 117
+
+    (58) statements -> states COL . statements
+    (59) statements -> states COL .
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    END             reduce using rule 59 (statements -> states COL .)
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    states                         shift and go to state 82
+    statements                     shift and go to state 124
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 118
+
+    (66) assignment -> ifers EQUALS . expression
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    IFERS           shift and go to state 13
+    LPAREN          shift and go to state 19
+
+    expression                     shift and go to state 125
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 119
+
+    (6) fdec -> PP FUNCTION FIFFERS args RPAREN COL . statements END FUNCTION
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    statements                     shift and go to state 126
+    states                         shift and go to state 82
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 120
+
+    (7) fdec -> PP SUB FIFFERS args RPAREN COL . statements END SUB
+    (58) statements -> . states COL statements
+    (59) statements -> . states COL
+    (60) states -> . assignment
+    (61) states -> . while
+    (62) states -> . vdec
+    (63) states -> . fdec
+    (64) states -> . expression
+    (65) states -> . console
+    (66) assignment -> . ifers EQUALS expression
+    (45) while -> . WHILE_LOOP condition COL statements END WHILE_LOOP
+    (24) vdec -> . DIM ifers AS types
+    (25) vdec -> . DIM IFERS AS types
+    (6) fdec -> . PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (7) fdec -> . PP SUB FIFFERS args RPAREN COL statements END SUB
+    (8) fdec -> . FUNCTION FIFFERS args RPAREN COL statements END FUNCTION
+    (9) fdec -> . SUB FIFFERS args RPAREN COL statements END SUB
+    (21) expression -> . term
+    (22) expression -> . expression PLUS term
+    (23) expression -> . expression MINUS term
+    (15) console -> . WRITE strings RPAREN
+    (16) console -> . WRITELINE strings RPAREN
+    (26) ifers -> . IFERS
+    (27) ifers -> . IFERS COM ifers
+    (38) term -> . factor
+    (39) term -> . term TIMES factor
+    (40) term -> . term DIVIDE factor
+    (41) term -> . term MOD factor
+    (42) term -> . term DOUBLESLASH factor
+    (43) factor -> . primary
+    (44) factor -> . factor EXPONENT primary
+    (67) primary -> . NUMBER
+    (68) primary -> . IFERS
+    (69) primary -> . LPAREN expression RPAREN
+
+    WHILE_LOOP      shift and go to state 11
+    DIM             shift and go to state 12
+    PP              shift and go to state 7
+    FUNCTION        shift and go to state 8
+    SUB             shift and go to state 9
+    WRITE           shift and go to state 14
+    WRITELINE       shift and go to state 15
+    IFERS           shift and go to state 90
+    NUMBER          shift and go to state 18
+    LPAREN          shift and go to state 19
+
+    statements                     shift and go to state 127
+    states                         shift and go to state 82
+    assignment                     shift and go to state 83
+    while                          shift and go to state 84
+    vdec                           shift and go to state 85
+    fdec                           shift and go to state 86
+    expression                     shift and go to state 87
+    console                        shift and go to state 88
+    ifers                          shift and go to state 89
+    term                           shift and go to state 10
+    factor                         shift and go to state 16
+    primary                        shift and go to state 17
+
+state 121
+
+    (8) fdec -> FUNCTION FIFFERS args RPAREN COL statements . END FUNCTION
+
+    END             shift and go to state 128
+
+
+state 122
+
+    (9) fdec -> SUB FIFFERS args RPAREN COL statements . END SUB
+
+    END             shift and go to state 129
+
+
+state 123
+
+    (45) while -> WHILE_LOOP condition COL statements END WHILE_LOOP .
+
+    $end            reduce using rule 45 (while -> WHILE_LOOP condition COL statements END WHILE_LOOP .)
+    COL             reduce using rule 45 (while -> WHILE_LOOP condition COL statements END WHILE_LOOP .)
+
+
+state 124
+
+    (58) statements -> states COL statements .
+
+    END             reduce using rule 58 (statements -> states COL statements .)
+
+
+state 125
+
+    (66) assignment -> ifers EQUALS expression .
+    (22) expression -> expression . PLUS term
+    (23) expression -> expression . MINUS term
+
+    COL             reduce using rule 66 (assignment -> ifers EQUALS expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+
+
+state 126
+
+    (6) fdec -> PP FUNCTION FIFFERS args RPAREN COL statements . END FUNCTION
+
+    END             shift and go to state 130
+
+
+state 127
+
+    (7) fdec -> PP SUB FIFFERS args RPAREN COL statements . END SUB
+
+    END             shift and go to state 131
+
+
+state 128
+
+    (8) fdec -> FUNCTION FIFFERS args RPAREN COL statements END . FUNCTION
+
+    FUNCTION        shift and go to state 132
+
+
+state 129
+
+    (9) fdec -> SUB FIFFERS args RPAREN COL statements END . SUB
+
+    SUB             shift and go to state 133
+
+
+state 130
+
+    (6) fdec -> PP FUNCTION FIFFERS args RPAREN COL statements END . FUNCTION
+
+    FUNCTION        shift and go to state 134
+
+
+state 131
+
+    (7) fdec -> PP SUB FIFFERS args RPAREN COL statements END . SUB
+
+    SUB             shift and go to state 135
+
+
+state 132
+
+    (8) fdec -> FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .
+
+    $end            reduce using rule 8 (fdec -> FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .)
+    COL             reduce using rule 8 (fdec -> FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .)
+
+
+state 133
+
+    (9) fdec -> SUB FIFFERS args RPAREN COL statements END SUB .
+
+    $end            reduce using rule 9 (fdec -> SUB FIFFERS args RPAREN COL statements END SUB .)
+    COL             reduce using rule 9 (fdec -> SUB FIFFERS args RPAREN COL statements END SUB .)
+
+
+state 134
+
+    (6) fdec -> PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .
+
+    $end            reduce using rule 6 (fdec -> PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .)
+    COL             reduce using rule 6 (fdec -> PP FUNCTION FIFFERS args RPAREN COL statements END FUNCTION .)
+
+
+state 135
+
+    (7) fdec -> PP SUB FIFFERS args RPAREN COL statements END SUB .
+
+    $end            reduce using rule 7 (fdec -> PP SUB FIFFERS args RPAREN COL statements END SUB .)
+    COL             reduce using rule 7 (fdec -> PP SUB FIFFERS args RPAREN COL statements END SUB .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AS in state 36 resolved as shift
